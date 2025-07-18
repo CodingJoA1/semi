@@ -1,0 +1,104 @@
+@charset "UTF-8";
+/* 전체 컨테이너 */
+.container { 
+    width: 400px;
+}
+
+/* 중앙 정렬 */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* 사이트 로고 */
+#sitelogo {
+    display: block;
+    text-align: center;
+}
+
+#sitelogo img {
+    width: 300px;
+    height: auto;
+}
+
+/* 입력 영역 */
+.signup {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#name, #password, #email {
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* 입력 필드 스타일 */
+.signup input[type="text"],
+.signup input[type="password"],
+.signup input[type="email"] {
+    flex: 1;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 3px solid #a47864;
+    box-sizing: border-box;
+}
+
+.signup input::placeholder {
+    color: #999;
+    font-size: 15px;
+}
+
+.signup input:focus {
+    outline: none;
+    border-color: #a47864;
+}
+
+/* 중복 확인, 인증 버튼 */
+.signup input[type="button"] {
+    width: 80px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #a47864;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.signup input[type="button"]:hover {
+    background-color: #8b634d;
+}
+
+#send_email {
+    width: 120px;
+}
+ /* 중복확인 메세지*/
+#idCheckMsg, #nicknameCheckMsg {
+	min-height: 15px;
+	font-size: 14px;
+}
+
+/* 회원가입 버튼 */
+#signup_btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #a47864;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#signup_btn:hover {
+    background-color: #8b634d;
+}

@@ -1,0 +1,95 @@
+/* 로고 관련 */
+
+#site-rogo{
+    width: 270px;
+    height: 100px;
+}
+
+
+/* 게시판 관련 */
+
+.board-button{
+    background-color: rgba(164, 120, 100, 0.5);
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    height: 35px;
+}
+
+.board-buttons{
+    background-color: rgba(164, 120, 100, 0.5);
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    height: 35px;
+    cursor: pointer;
+}
+
+#notice-board{
+    width: 80px;
+}
+
+#license-review-board{
+    width: 90px;
+}
+
+#study-board{
+    width: 80px;
+}
+
+#guideline-board{
+    width: 120px;
+}
+
+#bestPost-board{
+    width: 60px;
+}
+
+#login-td{
+    padding-left: 1000px;
+}
+
+#member-register-td{
+    padding-left: 10px;
+}
+
+#afterLogin{
+	padding-left: 800px;
+}
+
+/* 배너 */
+
+#baner{
+    width: 100%;
+    height: 400px;
+    display: block;
+    text-align: center;
+    line-height: 400px;
+    font-size: larger;
+    background: rgba(164, 120, 100, 0.6);
+}
+
+/* 캘린더 */
+
+#view_manage{
+    display: flex;
+}
+
+#calender{
+    width: 900px;
+    height: 400px;
+    display: inline-block;
+    text-align: center;
+    line-height: 400px;
+    font-size: larger;
+    background: rgba(164, 120, 100, 0.6);
+}
+
+/* 일정 */
+
+#notice_board{
+    width: 900px;
+    height: 400px;
+    display: inline-block;
+    margin-left: 85px;   
+}

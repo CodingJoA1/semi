@@ -1,0 +1,156 @@
+/* 로고 관련 */
+
+#site-rogo{
+    width: 205px;
+    height: 120px;
+}
+
+/* 게시판 관련 */
+
+.board-button{
+    background-color: rgba(164, 120, 100, 0.5);
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    height: 35px;
+}
+
+.board-buttons{
+    background-color: rgba(164, 120, 100, 0.5);
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    height: 35px;
+    cursor: pointer;
+}
+
+#notice-board{
+    width: 90px;
+}
+
+#license-review-board{
+    width: 90px;
+}
+
+#study-board{
+    width: 80px;
+}
+
+#guideline-board{
+    width: 120px;
+}
+
+#bestPost-board{
+    width: 60px;
+}
+
+#login-td{
+    padding-left: 1100px;
+}
+
+#board-title{
+    padding-top: 30px;
+    padding-left: 100px;
+}
+
+#afterLogin{
+	padding-left: 800px;
+}
+
+/* 게시글 관련 */
+
+#board-table{
+    margin-top: 10px;
+    margin-left: 100px;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+th{
+    border-bottom: 1px solid black;
+    color: rgb(164, 120, 100);
+}
+
+#post_no{
+    width: 100px;
+}
+
+#post_date{
+    width: 150px;
+}
+
+#post_title{
+    width: 1000px;
+}
+
+#post_author{
+    width: 150px;
+}
+
+#post_views{
+    width: 150px;
+}
+
+#post_recommend{
+    width: 150px;
+}
+
+.post-tr>td{
+    border-bottom: 1px solid rgba(164, 120, 100, 0.5);
+    padding-block: 10px;
+}
+
+.tdPostTitle{
+	text-align: left;
+}
+
+#writePost{
+	padding-top: 30px;
+	padding-left: 1700px;
+}
+
+#writeButton{
+	background-color: rgba(164, 120, 100, 0.5);
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    height: 35px;
+}
+
+/* 페이징 버튼 관련 */
+
+#paginButton{
+	margin-top: 15px;
+}
+
+.paginButtons{
+	text-decoration: none;
+	color: rgba(164, 120, 100, 0.5);
+	padding: 10px;
+}
+
+.paginButtons1{
+	text-decoration: none;
+	color: rgb(164, 120, 100);
+	font-size: large;
+	padding: 10px;
+}
+
+
+/* 검색 관련 */
+#boardList-search{
+    padding-left: 550px;
+    padding-top: 30px;
+}
+
+#search-content{
+    width: 500px;
+}
+
+/* 공지사항 게시판 관련 */
+#noticeboard-table{
+    margin-top: 10px;
+    margin-left: 150px;
+    text-align: center;
+    border-collapse: collapse;
+}
