@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/error/404.css}">
+</head>
+<body>
+	<div class="container">
+        <!-- 에러 문 -->
+        <div class="error_">
+            404: 페이지를 찾을 수 없습니다.
+        </div>
+
+        <!-- 다른 화면 이동 -->
+        <div class="error_link">
+            <a href="javascript:history.back();">이전 페이지</a>
+            <span>|</span>
+            <a href="/">메인으로</a>
+        </div>
+    </div>
+</body>
+</html>

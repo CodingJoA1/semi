@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<link rel="stylesheet" th:href="@{/css/users/enroll.css}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/users/enroll.js}"></script>
+</head>
+<body>
+	<form action="/users/enroll" method="POST">
+		<div class="container">
+			<!-- 로고 -->
+			<a href="/" id="sitelogo" title="사이트로고">
+				<img th:src="@{/image/로고.png}" alt="사이트로고" />
+			</a>
+			
+			<br />
+
+			<!-- 이름 -->
+			<div class="signup">
+				<input type="text" id="name" name="userName" placeholder="이름">
+			</div>
+			
+			<!-- 아이디 -->
+        <div class="signup">
+            <input type="text" id="id" name="userId" placeholder="아이디">
+
+            <!-- 중복확인 -->
+            <input type="button" id="check_id" name="check_id" value="중복확인">
+        </div>
+        <!-- 중복확인 메세지 -->
+		<div id="idCheckMsg"></div>
+
+			<!-- 별명 -->
+        <div class="signup">
+            <input type="text" id="nickname" name="userNickname" placeholder="별명">
+
+            <!-- 중복확인 -->
+            <input type="button" id="check_nickname" name="check_nickname" value="중복확인">
+        </div>
+        <!-- 중복확인 메세지 -->
+        <div id="nicknameCheckMsg"></div>
+        
+			<!-- 비밀번호 -->
+			<div class="signup">
+				<input type="password" id="password" name="userPassword" placeholder="비밀번호">
+			</div>
+
+			<!-- 이메일 -->
+<!-- 			<div class="signup"> -->
+<!-- 				<input type="email" id="email" name="userEmail" placeholder="이메일"> -->
+
+				<!-- 이메일 인증 버튼
+				<input type="button" id="send_email" name="send_email" value="인증번호 전송">
+			</div>
+
+			이메일 인증 확인
+			<div class="signup">
+				<input type="text" id="email_verify" name="email_verify" placeholder="인증번호">
+				<input type="button" id="email_verify_btn" name="email_verify_btn" value="확인">
+			</div> -->
+
+			<br />
+
+			<!-- 회원가입 버튼 -->
+			<div class="signup">
+				<input type="submit" id="signup_btn" name="signup_btn" value="회원가입">
+			</div>
+		</div>
+	</form>
+</body>
+</html>
