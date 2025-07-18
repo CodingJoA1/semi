@@ -12,7 +12,7 @@ window.onload = () => {
             button.style.background = '';
         });
     });
-	
+	console.log(topButtons)
 	topButtons.forEach(topButton => {
 		topButton.addEventListener('mouseover', function(){
 			topButton.style.background = '#a47864';

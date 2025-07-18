@@ -1,7 +1,7 @@
 window.onload = () =>{
     // board-button클래스를 가지고 있는 태그를 buttons에 담기
     const buttons = document.querySelectorAll('.board-button');
-	const topButtons = document.getElementsByName('board-buttons');
+	const topButtons = document.querySelectorAll('.board-buttons');
 	
     // select 변수 생성
     let select;
@@ -45,6 +45,7 @@ window.onload = () =>{
 	// 상단바에 있는 로그인, 회원가입, 로그아웃, 마이페이지 버튼의 URL이 꼬이는 상황이 발생하여
 	// 네임을 따로뒀음
 	topButtons.forEach(topButton => {
+		console.log(topButton)
 		topButton.addEventListener('mouseover', function(){
 			topButton.style.background = '#a47864';
 		});
@@ -53,13 +54,22 @@ window.onload = () =>{
 		});
 	});
 	
+	// 게시글 상세조회 관련 js
 	const titles = document.getElementsByClassName('tdPostTitle');
 	let postNo = 0;
-	console.log(titles)
 	for(const title of titles){
 		title.addEventListener('mouseover', () => {
+			title.style.background = 'rgba(164, 120, 100, 0.5)'
+			title.style.color = 'white';
 			title.style.cursor = 'pointer';
+			title.style.borderRadius = '10px';
 		});
+		
+		title.addEventListener('mouseout', () => {
+			title.style.background = '';	
+			title.style.color = 'black';
+		});
+		
 		title.addEventListener('click', function(){
 			postNo = this.previousElementSibling.previousElementSibling.innerText
 //			console.log(postNo)
@@ -70,6 +80,28 @@ window.onload = () =>{
 		});
 	}
 	
+	// 게시글 작성자 관련 js
+	const authors = document.getElementsByClassName('tdUserId')
+	for(const author of authors){
+		author.addEventListener('mouseover', () => {
+			author.style.background = 'rgba(164, 120, 100, 0.5)'
+			author.style.color = 'white';
+			author.style.cursor = 'pointer';
+			author.style.borderRadius = '10px';
+		});
+		
+		author.addEventListener('mouseout', () => {
+			author.style.background = '';	
+			author.style.color = 'black';
+		});
+		
+		author.addEventListener('click', () => {
+			location.href='/users/Profile'; 
+		});
+	}
+	
+	
+	// 게시글 작성 관련 js
 	const writeButton = document.getElementById('writeButton');
 	writeButton.addEventListener('mouseover', () => {
 		writeButton.style.background = '#a47864';
