@@ -38,6 +38,10 @@
         </tr>
     </table>
     
+    <div id="writePost" th:if="${session.loginUser != null}">
+    	<button id="writeButton">글쓰기</button>
+    </div>
+    
     <div id=paginButton align="center">
     	<th:block th:if="${pi.currentPage > 1}">
     		<a th:href="@{${loc}(page=${pi.currentPage-1})}" class="paginButtons">

@@ -53,7 +53,22 @@ window.onload = () =>{
 		});
 	});
 	
-	
+	const titles = document.getElementsByClassName('tdPostTitle');
+	let postNo = 0;
+	console.log(titles)
+	for(const title of titles){
+		title.addEventListener('mouseover', () => {
+			title.style.cursor = 'pointer';
+		});
+		title.addEventListener('click', function(){
+			postNo = this.previousElementSibling.previousElementSibling.innerText
+//			console.log(postNo)
+//			console.log(location.href.substring(location.href.indexOf('page')+5))
+			const index = location.href.indexOf('page');
+			const page = index == -1 ? 1 : location.href.substring(location.href.indexOf('page')+5);
+			location.href='/board/' + postNo + '/' + page;
+		});
+	}
 	
 	const writeButton = document.getElementById('writeButton');
 	writeButton.addEventListener('mouseover', () => {
@@ -67,32 +82,9 @@ window.onload = () =>{
 		location.href='/board/write';
 	});
 	
-	const titles = document.getElementsByClassName('tdPostTitle');
-	let postNo = 0;
-	for(const title of titles){
-		title.addEventListener('mouseover', () => {
-			title.style.cursor = 'pointer';
-		});
-				
-		title.addEventListener('click', function(){
-			postNo = this.previousElementSibling.previousElementSibling.innerText
-//			console.log(postNo)
-//			console.log(location.href.substring(location.href.indexOf('page')+5))
-			const index = location.href.indexOf('page');
-			const page = index == -1 ? 1 : location.href.substring(location.href.indexOf('page')+5);
-			location.href='/board/' + postNo + '/' + page;
-		});
-	}
-	
-	const contentButtons = document.getElementsByClassName('postContent-buttons');
-	for(const button of contentButtons){
-		button.addEventListener('mouseover', () => {
-			button.style.cursor = 'pointer';
-		});
-	}
-	
 	document.getElementById('postContentToList').addEventListener('click', () => {
 		location.href='javascript:history.back()';
 	});
+	
 	
 }

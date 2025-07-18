@@ -12,7 +12,7 @@
     
     <form method="POST" id="postContent-form" encType="multipart/form-data" >
         <select>
-            <option>공지사항</option>
+            <option th:if="${session.loginUser.admin == 'Y'}">공지사항</option>
             <option>자격증 후기</option>
             <option>공부 방법</option>
             <option>초보자 가이드라인</option>

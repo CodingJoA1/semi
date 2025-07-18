@@ -37,6 +37,11 @@
             <td>[[${p.postRecommend}]]</td>
         </tr>
     </table>
+        
+    <div id="writePost" th:if="${session.loginUser != null}">
+    	<button id="writeButton">글쓰기</button>
+    </div>
+    
     
     <div id=paginButton align="center">
     	<th:block th:if="${pi.currentPage > 1}">
