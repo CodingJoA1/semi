@@ -1,0 +1,130 @@
+<!-- 
+할일
+    세션에서 정보를 와 채팅의 유저가 같으면 오른쪽에 표시 아니면 왼쪽에 표기 
+    실시간으로 채팅이 되어야 함
+    db에 저장이 되야함
+    관리자가 삭제버튼을 누를 시 해당 채팅이 삭제되어야함
+
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<link rel="stylesheet" href="/css/chatting/chatting.css">
+<script src="/js/chatting/chatting.js" type="module"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div id="cMain">
+        <div id="chat">
+            
+            <!-- <div class="lChat chatting">
+                <div class="dsib name">가</div>
+                <div class="dsib date">2025/07/02</div>
+                <br>
+                    &emsp;
+                    <div class="dsib content">안녕하세요</div>
+
+            </div>
+            <div class="rChat chatting">
+                <div class="dsib date">2025/07/02</div>
+                <div class="dsib name">나</div>              
+                <br>
+                    <div class="dsib content">감사해요</div>
+                    &emsp;
+            </div> -->
+  
+        </div>
+        <div id="messageDiv">
+            <table>
+                <tr>
+                    <td id="chatMessage">
+                        <!-- 글자 수 제한 = maxlength -->
+                         <textarea id="message" placeholder="메세지를 입력하세요" maxlength="200"></textarea>
+                    </td>
+                    <td style="width: 10px;">
+
+                    </td>
+                    <td id="chatSend">
+                        <button  id="sendButton">→</button>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+<script th:inline="javascript">
+$(document).ready(function(){
+
+    const username = "userName";
+
+    $("#disconn").on("click", (e) => {
+        disconnect();
+    })
+
+    $("#sendButton").on("click", (e) => {
+        send();
+    });
+
+    const websocket = new WebSocket("ws://localhost:8080/ws/chat");
+
+    websocket.onmessage = onMessage;
+    /* websocket.onopen = onOpen;
+    websocket.onclose = onClose; */
+
+    function send(){
+
+        let msg = document.getElementById("message");
+        websocket.send(username + ":" + msg.value);
+        msg.value = '';
+    }
+/* 
+    //채팅창에서 나갔을 때
+    function onClose(evt) {
+        var str = username + ": 님이 방을 나가셨습니다.";
+        websocket.send(str);
+    }
+
+    //채팅창에 들어왔을 때
+    function onOpen(evt) {
+        var str = username + ": 님이 	입장하셨습니다.";
+        websocket.send(str);
+    } */
+
+    function onMessage(msg) {
+        var data = msg.data;
+        var sessionId = null;
+        //데이터를 보낸 사람
+        var message = null;
+        var arr = data.split(":");
+
+        var cur_session = username;
+
+        //현재 세션에 로그인 한 사람
+        sessionId = arr[0];
+        message = arr[1];
+
+
+            //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
+            if(sessionId == cur_session){
+                var str = "<div class='rChat chatting'>";
+                str += "<div class='dsib name'>"+sessionId+"</div>";
+                str += "<br>&emsp;<div class='dsib content'>"+message+"</div>";
+                str += "</div>";
+                $("#chat").append(str);
+            }
+            else{
+            	var str = "<div class='lChat chatting'>";
+                str += "<div class='dsib name'>"+sessionId+"</div>";
+                str += "<br>&emsp;<div class='dsib content'>"+message+"</div>";
+                str += "</div>";
+                $("#chat").append(str);
+            }
+        }
+    })
+</script>
+</body>
+</html>
