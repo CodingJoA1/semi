@@ -1,0 +1,116 @@
+/* 로고 관련 */
+
+#site-rogo{
+    width: 205px;
+    height: 120px;
+}
+
+/* 게시판 관련 */
+
+.board-button{
+    background-color: rgba(164, 120, 100, 0.7);
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    height: 35px;
+}
+
+.board-buttons{
+    background-color: rgba(164, 120, 100, 0.5);
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    height: 35px;
+    cursor: pointer;
+}
+
+
+#notice-board{
+    width: 110px;
+}
+
+#license-review-board{
+    width: 90px;
+}
+
+#study-board{
+    width: 80px;
+}
+
+#guideline-board{
+    width: 120px;
+}
+
+#login-td{
+    padding-left: 800px;
+}
+
+#board-title{
+    padding-left: 200px;
+}
+
+#afterLogin{
+	padding-left: 800px;
+}
+
+/* 게시글 관련 */
+#postContent-form{
+    padding-left: 350px;
+    padding-top: 100px;
+}
+
+#postWrite-title{
+    width: 900px;
+    height: 30px;
+}
+
+#postWrite-content{
+    margin-left: 130px;
+    margin-top: 30px;
+    width: 900px;
+    height: 500px;
+    resize: none;
+}
+
+#postWrite-cancelButton{
+    margin-left: 900px;
+    background-color: rgba(164, 120, 100, 0.5);
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    width: 50px;
+    height: 35px;
+}
+
+#postWrite-commitButton{
+    margin-left: 20px;
+    background-color: rgba(164, 120, 100, 0.5);
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    width: 50px;
+    height: 35px;
+}
+
+/* 첨부파일 관련 */
+
+#addFile{
+	background-color: rgba(164, 120, 100, 0.5);
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    height: 30px;
+}
+
+.fileLabel{
+    margin-left: 130px;
+}
+
+input[type=file]::file-selector-button{
+    background-color: rgba(164, 120, 100, 0.5);
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    height: 30px;
+}
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/postpage/postWriteCss.css" rel="stylesheet" type="text/css"/>
+    <script src="/js/board/mainPage.js"></script>
+    <title>게시글 작성 페이지</title>
+</head>
+<body>
+    <th:block th:replace="~{views/common/pageTop :: pageTop}"></th:block>
+    
+    <form method="POST" id="postContent-form" encType="multipart/form-data" >
+        <select>
+            <option>공지사항</option>
+            <option>자격증 후기</option>
+            <option>공부 방법</option>
+            <option>초보자 가이드라인</option>
+        </select>
+        
+        <input type="text" id="postWrite-title" placeholder="제목을 입력하세요."/>
+        <br/>
+        
+        <textarea id="postWrite-content" placeholder="내용을 입력하세요."></textarea>
+        <br/>
+        
+	    <button id="addFile" type="button">파일 추가</button>
+        <div class="fileArea">
+	        <label class="fileLabel">첨부파일</label>
+	        <input type="file" class="fileUrl" />
+        </div>
+        
+        <br/>
+        <br/>
+        <br/>
+        
+        <button id="postWrite-cancelButton">취소</button>
+        <button id="postWrite-commitButton">완료</button>
+    </form>
+</body>
+</html>

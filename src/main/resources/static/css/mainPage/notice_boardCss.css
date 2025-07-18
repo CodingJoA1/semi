@@ -1,0 +1,41 @@
+
+/* 게시판 관련 */
+#board-title{
+    padding-left: 380px;
+}
+
+/* 게시글 관련 */
+
+#board-table{
+    margin-top: 100px;
+    text-align: center;
+}
+
+th{
+    border-bottom: 1px solid black;
+}
+
+#post_no{
+    width: 100px;
+}
+
+#post_date{
+    width: 150px;
+}
+
+#post_title{
+    width: 1000px;
+}
+
+#post_author{
+    width: 150px;
+}
+
+#post_views{
+    width: 150px;
+}
+
+.post-tr>td{
+    border: 1px solid lightgray;
+    padding-block: 20px;
+}

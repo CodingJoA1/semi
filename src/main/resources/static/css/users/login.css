@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/* 전체 컨테이너 */
+.container {
+    width: 400px;
+}
+
+/* 중앙 정렬 */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* 사이트 로고 */
+#sitelogo {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#sitelogo img {
+    width: 300px;
+    height: auto;
+}
+
+/* 입력 칸 스타일 */
+.login {
+    margin-bottom: 15px;
+}
+
+.login input {
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 3px solid #a47864;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.login input:focus {
+    outline: none;
+    border-color: #a47864;
+}
+
+.login input::placeholder {
+    color: #999;
+    font-size: 15px;
+}
+
+/* 화면 이동 링크 */
+.login_link {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login_link span {
+    color: #a47864;
+    margin: 0 8px;
+    font-weight: bold;
+}
+
+.login_link a {
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login_link a:hover {
+    color: #a47864;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* 소셜 로그인 */
+.social_login {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 20px 0;
+}
+
+.social_btn img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* 로그인 버튼 */
+#login_btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 20px;
+    background-color: #a47864;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+#login_btn:hover {
+    background-color: #8b634d;
+}
