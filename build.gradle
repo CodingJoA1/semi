@@ -41,6 +41,9 @@ dependencies {
 	
 	//chatting
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	
+	// 메일인증
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
 
 tasks.named('test') {
