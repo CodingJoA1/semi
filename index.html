@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>메인 페이지</title>
+  
+  <!-- main.css 연결: 스타일 정의 -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- events.js 연결: 일정 데이터가 들어있는 파일 -->
+  <script src="js/events.js"></script>
+
+  <!-- FullCalendar 라이브러리 로딩 (버전 6.1.14) -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js"></script>
+</head>
+<body>
+
+  <!-- 미니 캘린더와 일정 리스트를 감싸는 전체 박스 -->
+  <div class="mini-calendar-container">
+
+    <!-- 왼쪽의 미니 캘린더 박스 -->
+    <div class="mini-calendar-box">
+      <!-- 연/월 텍스트가 들어가는 곳 -->
+      <div id="miniCalendarHeader"></div> 
+
+      <!-- FullCalendar가 렌더링될 div -->
+      <div id="miniCalendar"></div>
+    </div>
+
+    <!-- 오른쪽의 일정 요약 및 버튼 -->
+    <div class="mini-schedule-list">
+      <h3>📅 이번 달 일정</h3>
+
+      <!-- 자세히 보기 버튼 (큰 캘린더 페이지로 이동) -->
+      <a href="calendar.html">
+        <button class="calendar-button">자세히 보기</button>
+      </a>
+    </div>
+  </div>
+
+  <!-- 캘린더 렌더링 및 일정 필터링 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const calendarEl = document.getElementById('miniCalendar');
+      const headerEl = document.getElementById('miniCalendarHeader');
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = today.getMonth() + 1;
+
+      // 현재 연/월을 상단 텍스트로 표시
+      headerEl.textContent = `${year}년 ${month}월`;
+      Object.assign(headerEl.style, {
+        fontWeight: 'bold',
+        fontSize: '16px',
+        marginBottom: '8px'
+      });
+
+      // FullCalendar 미니 캘린더 생성
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth', // 월 단위 보기
+        headerToolbar: false,        // 상단 툴바 제거
+        fixedWeekCount: false,       // 고정 주 수 비활성화 (5주가 아닐 수도 있음)
+        events: sharedEvents         // 외부에서 불러온 일정 데이터 사용
+      });
+      calendar.render();
+
+      // 이번 달 일정만 추려서 오른쪽 리스트에 표시
+      const listContainer = document.querySelector('.mini-schedule-list');
+      const list = document.createElement('ul');
+
+      sharedEvents.forEach(event => {
+        const date = new Date(event.start);
+        if (date.getFullYear() === year && date.getMonth() + 1 === month) {
+          const li = document.createElement('li');
+          li.textContent = `${month}/${date.getDate()} - ${event.title}`;
+          list.appendChild(li);
+        }
+      });
+
+      // "자세히 보기" 링크 위에 리스트 삽입
+      listContainer.insertBefore(list, listContainer.querySelector('a'));
+    });
+  </script>
+</body>
+</html>
