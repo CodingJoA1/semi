@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>일정 관리</title>
+
+  <!-- FullCalendar 스타일시트 -->
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.css' rel='stylesheet' />
+
+  <style>
+    /* 전체 화면을 좌우로 분할 */
+    body {
+      display: flex;
+      margin: 40px;
+      font-family: sans-serif;
+    }
+
+    /* 캘린더 영역 (좌측 60%) */
+    #calendar {
+      width: 800px; /* 고정된 가로 크기 800px */
+      height: 600px; /* 고정된 높이 */
+    }
+
+    /* 일정 목록 영역 (우측 40%) */
+    #schedule-list {
+      width: 40%;
+      padding-left: 30px;
+    }
+
+    /* 개별 일정 아이템 박스 스타일 */
+    .schedule-item {
+      margin-bottom: 12px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #f8f9fa;
+    }
+
+    /* 삭제 버튼 스타일 */
+    .delete-btn {
+      margin-top: 6px;
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 캘린더를 표시할 div -->
+  <div id="calendar"></div>
+
+  <!-- 일정 목록을 표시할 영역 -->
+  <div id="schedule-list">
+    <h2>일정 목록</h2>
+    <div id="eventListContainer"></div>
+  </div>
+
+  <!-- 외부 데이터 및 라이브러리 로딩 -->
+  <script src="js/events.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
+
+  <script>
+    const colors = ['#007bff', '#28a745', '#ffc107', '#dc3545', '#6610f2']; // 일정 색상 배열
+    let colorIndex = 0; // 색상 순환용 인덱스
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const calendarEl = document.getElementById('calendar');
+      const eventListContainer = document.getElementById('eventListContainer');
+
+      // FullCalendar 생성
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: '' // 뷰 전환 버튼 없음
+        },
+        fixedWeekCount: false,
+        events: sharedEvents, // events.js의 전역 배열 참조
+
+        // 날짜 클릭 시 일정 추가
+        dateClick: function (info) {
+          const title = prompt(info.dateStr + ' 일정 제목을 입력하세요:');
+          if (!title) return;
+
+          const isOneDay = confirm("하루짜리 일정인가요?");
+          let endDate = null;
+
+          if (!isOneDay) {
+            endDate = prompt('종료 날짜를 YYYY-MM-DD 형식으로 입력하세요:');
+            if (!endDate) return;
+
+            // 종료 날짜를 하루 더해줘야 FullCalendar에서 정확히 반영됨
+            const realEnd = new Date(endDate);
+            realEnd.setDate(realEnd.getDate() + 1); // 종료 날짜에 하루 더하기
+            endDate = realEnd.toISOString().split('T')[0]; // 날짜만 포맷
+          }
+
+          // D-day 계산
+          const today = new Date();
+          const startDate = new Date(info.dateStr);
+          const timeDiff = startDate - today;
+          const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+          // 색상 설정 및 이벤트 추가
+          const color = colors[colorIndex];
+          colorIndex = (colorIndex + 1) % colors.length;
+
+          const event = calendar.addEvent({
+            title: `${title} (${daysLeft >= 0 ? 'D-' + daysLeft : '마감됨'})`,
+            start: info.dateStr,
+            end: endDate || undefined,
+            allDay: true,
+            color: color
+          });
+
+          // 일정 오른쪽 목록에도 추가
+          const div = document.createElement('div');
+          div.className = 'schedule-item';
+          div.innerHTML = `
+            <strong>${event.title}</strong><br/>
+            시작: ${info.dateStr}<br/>
+            ${endDate ? `<br/>종료: ${new Date(new Date(endDate).getTime() - 86400000).toISOString().split('T')[0]}` : ''}<br/> <!-- 종료 날짜에서 하루 빼기 -->
+            <button class="delete-btn">일정 삭제</button>
+          `;
+          div.querySelector('.delete-btn').addEventListener('click', () => {
+            event.remove();
+            div.remove();
+          });
+
+          eventListContainer.appendChild(div);
+        }
+      });
+
+      calendar.render();
+    });
+  </script>
+</body>
+
+</html>
