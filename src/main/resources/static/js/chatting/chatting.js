@@ -1,10 +1,13 @@
+//redis 추가점
+// 이전 채팅을 전부 출력
+// 관리자용 화면에서 특정 유저의 채팅 출력
+// 
 $(document).ready(function(){
-
-    const username = "userName";
-
-    $("#disconn").on("click", (e) => {
-        disconnect();
-    })
+	//var session = $("#loginUser");
+	//console.log(session);
+    //const username = session.getUserName;
+    const username = "user01";
+s
 
     $("#sendButton").on("click", (e) => {
         send();
@@ -22,18 +25,41 @@ $(document).ready(function(){
         websocket.send(username + ":" + msg.value);
         msg.value = '';
     }
-/* 
+
     //채팅창에서 나갔을 때
     function onClose(evt) {
-        var str = username + ": 님이 방을 나가셨습니다.";
-        websocket.send(str);
+	
     }
 
     //채팅창에 들어왔을 때
     function onOpen(evt) {
-        var str = username + ": 님이 	입장하셨습니다.";
-        websocket.send(str);
-    } */
+        $.ajax({
+			url : "",
+			success : data = () =>{
+				for(const list of data){
+					console.log(list);
+					/*if(sessionId == cur_session){
+			                var str = "<div class='rChat chatting'>";
+			                str += "<div class='dsib name'>"+sessionId+"</div>";
+			                str += "<br>&emsp;<div class='dsib content'>"+message+"</div>";
+			                str += "</div>";
+			                $("#chat").append(str);
+			            }
+			            else{
+			            	var str = "<div class='lChat chatting'>";
+			                str += "<div class='dsib name'>"+sessionId+"</div>";
+			                str += "<br>&emsp;<div class='dsib content'>"+message+"</div>";
+			                str += "</div>";
+			                $("#chat").append(str);
+			            }*/
+				}
+				
+			}	,
+			error : function() {
+				
+			}
+		});
+    }
 
     function onMessage(msg) {
         var data = msg.data;
