@@ -45,4 +45,16 @@ public class BoardService {
 		return mapper.selectAttm(bId);
 	}
 
+	public int insertPost(Board b) {
+		return mapper.insertPost(b);
+	}
+
+	public int insertAttm(ArrayList<Attachment> list) {
+		return mapper.insertAttm(list);
+	}
+
+	public ArrayList<Board> selectTop() {
+		return mapper.selectTop();
+	}
+
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/postPage/postCss.css" rel="stylesheet" type="text/css"/>
-    <script src="/js/board/boardList.js"></script>
+    <script src="/js/board/postContent.js"></script>
     <title>게시글 내용</title>
 </head>
 <body>
@@ -31,12 +31,16 @@
         <br/>
         
         <!-- 본문 내용 -->
-        <div id="postContent-content">[[${b.postContent}]]</div>
+        <div id="postContent-content">
+        	[[${b.postContent}]]
+        </div>
         <br/>
         
         <!-- 첨부파일 -->
         <div th:each="a:${list}">
-        	<a th:href="@{/}+${a.attmRename}" th:download="${a.attachmentName}"></a>
+	        <h4 class="files">
+	        	<a th:href="@{/}+${a.attmRename}" th:download="${a.attachmentName}">첨부파일 : [[${a.attachmentName}]]</a>
+	        </h4>
         </div>
         
         
@@ -46,7 +50,7 @@
 	        <button class="postContent-buttons" type="button">수정</button>
 	        <button class="postContent-buttons" type="button">삭제</button>
         </th:block>
-        <button class="postContent-buttons" id="postContentToList" type="button">목록</button>
+        <button class="postContent-buttons" id="postContentToList" type="button" onclick="location.href='javascript:history.back()'">목록</button>
         <br/>
         </div>
         

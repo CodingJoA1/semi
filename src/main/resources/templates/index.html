@@ -6,10 +6,32 @@
     <title>메인페이지</title>
     <link href="css/mainpage/mainPageCss.css" rel="stylesheet" type="text/css"/>
     <script src="js/board/mainPage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <th:block th:replace="~{views/common/pageTop :: pageTop}"></th:block>
 
-    <p id="baner">배너</p>
+    <p id="baner"><img src="/image/배너(샘플).jpg" id="bannerImage"></p>
+    
+    <!-- 로그인 시 캘린더 및 인기글 게시판 출력 -->
+    	<div id="view_manage">
+        	<p id="calender"><img src="/image/캘린더(샘플).jpg" id="calenderImage"></p>
+        	<div id="bestTopDiv">
+        	🔥누적 인기글🔥
+        		<table id="bestTopTable">
+        			<thead>
+        				<tr>
+        					<th>글 번호</th>
+        					<th>작성 일자</th>
+        					<th>제목</th>
+        					<th>작성자</th>
+        					<th>조회수</th>
+        				</tr>
+        			</thead>
+        			<tbody id="tBody"></tbody>
+        		</table>
+        	</div>
+    	</div>
+    
 </body>
 </html>

@@ -4,38 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/postpage/postWriteCss.css" rel="stylesheet" type="text/css"/>
-    <script src="/js/board/mainPage.js"></script>
+    <script src="/js/board/postWrite.js"></script>
     <title>게시글 작성 페이지</title>
 </head>
 <body>
     <th:block th:replace="~{views/common/pageTop :: pageTop}"></th:block>
     
-    <form method="POST" id="postContent-form" encType="multipart/form-data" >
-        <select id="selectCategory">
-            <option th:if="${session.loginUser.admin == 'Y'}">공지사항</option>
-            <option>자격증 후기</option>
-            <option>공부 방법</option>
-            <option>초보자 가이드라인</option>
+    <form method="POST" action="/board/insert" id="postContent-form" encType="multipart/form-data" >
+        <select id="selectCategory" name="category">
+            <option th:if="${session.loginUser.admin == 'Y'}" value="noticeBoard">공지사항</option>
+            <option value="licenseBoard">자격증 후기</option>
+            <option value="studyBoard">공부 방법</option>
+            <option value="guidelineBoard">초보자 가이드라인</option>
         </select>
         
-        <input type="text" id="postWrite-title" placeholder="제목을 입력하세요."/>
+        <input type="text" id="postWrite-title" name="postTitle" placeholder="제목을 입력하세요." required/>
         <br/>
         
-        <textarea id="postWrite-content" placeholder="내용을 입력하세요."></textarea>
+        <textarea id="postWrite-content" name="postContent" placeholder="내용을 입력하세요."  required></textarea>
         <br/>
         
 	    <button id="addFile" type="button">파일 추가</button>
         <div class="fileArea">
 	        <label class="fileLabel">첨부파일</label>
-	        <input type="file" class="fileUrl"/>
+	        <input type="file" class="fileUrl" name="file"/>
         </div>
         
         <br/>
         <br/>
         <br/>
         
-        <button id="postWrite-cancelButton">취소</button>
-        <button id="postWrite-commitButton">완료</button>
+        <button id="postWrite-cancelButton" class="postWriteButtons" type="button" onclick="location.href='javascript:history.back()'">취소</button>
+        <button id="postWrite-commitButton" class="postWriteButtons">완료</button>
     </form>
 </body>
 </html>

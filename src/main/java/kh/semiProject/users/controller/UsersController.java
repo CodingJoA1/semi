@@ -16,7 +16,6 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import jakarta.servlet.http.HttpSession;
 import kh.semiProject.users.model.exception.UsersException;
-import kh.semiProject.users.model.service.EmailService;
 //import kh.semiProject.users.model.service.EmailService;
 import kh.semiProject.users.model.service.UsersService;
 import kh.semiProject.users.model.vo.Users;
@@ -29,8 +28,8 @@ import lombok.RequiredArgsConstructor;
 public class UsersController {
 	
 	private final UsersService uService;
-	@Autowired
-	private EmailService emailService;
+//	@Autowired
+//	private EmailService emailService;
 	
 	// 로그인 화면 이동
 	@GetMapping("/signIn")
@@ -45,7 +44,7 @@ public class UsersController {
 	    
 	    if (loginUser != null && u.getUserPassword().equals(loginUser.getUserPassword())) {
 	        session.setAttribute("loginUser", loginUser);
-	        return "views/mainPage/mainPage(User)";
+	        return "redirect:/";
 	    } else {
 	        throw new UsersException("로그인을 실패했습니다.");
 	    }
@@ -100,25 +99,25 @@ public class UsersController {
 	}
 	
 	// 이메일 인증
-		// 인증번호 전송
-	    @PostMapping("/sendCode")
-	    public ResponseEntity<?> sendCode(@RequestParam("email") String email, HttpSession session) {
-	        String code = emailService.sendVerificationEmail(email);
-	        session.setAttribute("authCode", code);
-	        return ResponseEntity.ok("인증번호 전송 완료");
-	    }
-
-	    // 인증번호 확인   verifyCode
-	    @PostMapping("/verifyCode")
-	    public ResponseEntity<?> verifyCode(@RequestParam("code") String code, HttpSession session) {
-	        String savedCode = (String) session.getAttribute("authCode");
-	        if (savedCode != null && savedCode.equals(code)) {
-	            return ResponseEntity.ok("인증 성공");
-	        } else {
-	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("인증 실패");
-	        }
-	    }
-	
+	// 인증번호 전송
+//    @PostMapping("/sendCode")
+//    public ResponseEntity<?> sendCode(@RequestParam("email") String email, HttpSession session) {
+//        String code = emailService.sendVerificationEmail(email);
+//        session.setAttribute("authCode", code);
+//        return ResponseEntity.ok("인증번호 전송 완료");
+//    }
+//
+//    // 인증번호 확인
+//    @PostMapping("/verifyCode")
+//    public ResponseEntity<?> verifyCode(@RequestParam String code, HttpSession session) {
+//        String savedCode = (String) session.getAttribute("authCode");
+//        if (savedCode != null && savedCode.equals(code)) {
+//            return ResponseEntity.ok("인증 성공");
+//        } else {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("인증 실패");
+//        }
+//    }
+//	
 	// 마이페이지 화면 이동
 	@GetMapping("/myInfo")
 	public String myInfo() {

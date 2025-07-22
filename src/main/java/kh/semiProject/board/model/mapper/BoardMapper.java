@@ -23,4 +23,10 @@ public interface BoardMapper {
 
 	ArrayList<Attachment> selectAttm(int bId);
 
+	int insertPost(Board b);
+
+	int insertAttm(ArrayList<Attachment> list);
+
+	ArrayList<Board> selectTop();
+
 }
