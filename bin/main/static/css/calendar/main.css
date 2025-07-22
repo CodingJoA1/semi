@@ -1,0 +1,99 @@
+/* 미니 캘린더 박스 스타일 */
+.mini-calendar-box {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fefefe;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* 자세히 보기 버튼 스타일 */
+.calendar-button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+/* 전체 캘린더 컨테이너: 좌우 정렬 */
+.mini-calendar-container {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* FullCalendar 캘린더 내부 스타일 조정 */
+#miniCalendar {
+  border: none;            
+  background-color: transparent; 
+  box-shadow: none;  
+}
+
+/* 오른쪽 일정 요약 영역 */
+.mini-schedule-list {
+  flex-grow: 1;
+}
+
+/* 일정 제목 스타일 */
+.mini-schedule-list h3 {
+  margin-top: 0;
+}
+
+/* FullCalendar 스크롤러 숨김 */
+#miniCalendar .fc-scroller {
+  overflow: hidden !important;
+}
+
+/* 캘린더 그리드 높이 강제 설정 */
+#miniCalendar .fc-scrollgrid-sync-table {
+  height: 100% !important;
+}
+
+/* 각 날짜 셀 내부 패딩 및 폰트 축소 */
+#miniCalendar .fc-daygrid-day-frame {
+  padding: 1px 2px;
+  font-size: 10px;
+  min-height: 20px;
+}
+
+/* 일정(이벤트) 텍스트 크기 조정 */
+#miniCalendar .fc-event {
+  font-size: 9px;
+  padding: 0 2px;
+  margin: 1px 0;
+  line-height: 1.2;
+}
+
+/* 날짜 숫자 폰트 크기 조정 */
+#miniCalendar .fc-daygrid-day-number {
+  font-size: 10px;
+  padding: 0 2px;
+}
+
+/* 미니 뷰 높이 제한 */
+#miniCalendar .fc-view-harness {
+  min-height: 100px;
+}
+
+/* 스크롤 숨김 */
+#miniCalendar .fc-scroller {
+  overflow: visible !important;
+}
+
+/* 캘린더 상단 연/월 표시 텍스트 */
+#miniCalendarHeader {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  background: transparent;  
+  padding: 4px 0;
+  border: none;            
+  box-shadow: none; 
+  position: relative;
+  z-index: 1;
+}
