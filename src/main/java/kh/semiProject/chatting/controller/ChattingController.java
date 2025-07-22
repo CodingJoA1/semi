@@ -12,8 +12,13 @@ public class ChattingController {
 
 	@GetMapping("/chatting")
 	public String chatting(HttpSession session) {
-		System.out.println(session.getAttribute("loginUser"));
+//		System.out.println(session.getAttribute("loginUser"));
 		return "/chatting/chat";
+	}
+	
+	@GetMapping("getBeforeChatting")
+	public void save() {
+		
 	}
 	
 }
