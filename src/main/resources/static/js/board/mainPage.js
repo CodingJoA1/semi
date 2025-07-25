@@ -1,4 +1,6 @@
 window.onload = () => {
+
+	
 //DOMContentLoaded : HTML 문서가 로드되고 DOM 트리가 완성되었을때
     const buttons = document.querySelectorAll('.board-button');
 	const topButtons = document.querySelectorAll('.board-buttons');

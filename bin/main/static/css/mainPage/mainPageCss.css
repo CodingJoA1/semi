@@ -93,3 +93,8 @@
     display: inline-block;
     margin-left: 85px;   
 }
+
+/*채팅 */
+#chattingModal{
+	display:inline-block;
+}

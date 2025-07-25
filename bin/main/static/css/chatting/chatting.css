@@ -23,7 +23,7 @@
     vertical-align: top;
 }
 .chatting{
-    height: 30px;
+    height: 50px;
     margin:10px 5px;
 }
 
@@ -31,7 +31,7 @@
     color: blue;
 }
 .content{
-    margin-left: 0px 3px;
+    margin: 0px 3px;
 }
 
 .rChat .date{
@@ -86,4 +86,17 @@
     border-radius: 30px;
     height:30px;
     font-size: 20px;
+}
+
+.rdate{
+	font-size:10px; 
+	margin : 0px;
+	margin-right:20px;
+}
+
+
+.ldate{
+	font-size:10px; 
+	margin : 0px;
+	margin-left:20px;
 }
