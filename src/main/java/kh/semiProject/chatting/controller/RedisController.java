@@ -25,10 +25,9 @@ public class RedisController {
     public String saveData(
     		@RequestParam("cId") String id, 
     		@RequestParam("cContent") String content, 
-    		@RequestParam("cNickName") String nickName
+    		@RequestParam("cNickName") String nickName,
+    		@RequestParam("date") String date
     		) {
-    	Date date = new Date();
-    	System.out.println("1");
         redisService.saveData(id, content, nickName , date);
         return "save";
     }
@@ -36,8 +35,8 @@ public class RedisController {
     @GetMapping("/get")
     @ResponseBody
     public List<Object> getData(@RequestParam("user") String user) {
-        List<Object> list=  redisService.getData(user); 
-        
+        List<Object> list =  redisService.getData(user); 
+        System.out.println(list);
     	return list;
     }
 }

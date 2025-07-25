@@ -1,5 +1,13 @@
 window.onload = () => {
-
+		const chat = document.getElementById("chattingModal");
+		chat.style.visibility = "hidden";
+	document.getElementById("SHBtn").addEventListener('click',function(){
+		if(chat.style.visibility == "hidden"){
+			chat.style.visibility = "visible";
+		}else{
+			chat.style.visibility = "hidden";
+		}
+	});
 	
 //DOMContentLoaded : HTML 문서가 로드되고 DOM 트리가 완성되었을때
     const buttons = document.querySelectorAll('.board-button');

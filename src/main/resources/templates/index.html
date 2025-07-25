@@ -32,11 +32,11 @@
         		</table>
         	</div>
     	</div>
-		<div class="chat" th:if="${session.loginUser != null}">
+		<div class="chatDiv" th:if="${session.loginUser != null}">
 		
 	    	<div id="chattingModal" th:insert="~{/views/chatting/chat}">
 	    	</div>
-	    	<button> 채팅</button>
+	    	<button id="SHBtn"> 채팅</button>
 		</div>
 </body>
 </html>

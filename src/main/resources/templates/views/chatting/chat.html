@@ -1,11 +1,3 @@
-<!-- 
-할일
-    세션에서 정보를 와 채팅의 유저가 같으면 오른쪽에 표시 아니면 왼쪽에 표기 
-    실시간으로 채팅이 되어야 함
-    db에 저장이 되야함
-    관리자가 삭제버튼을 누를 시 해당 채팅이 삭제되어야함
-
--->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
@@ -21,6 +13,7 @@
 		// 관리자용 화면에서 특정 유저의 채팅 출력
 		// 
 		$(document).ready(function(){
+			let today = new Date();
 			//현재 세션의 닉네임을 표기함
 			let username =document.getElementById("nickName").value;
 			let userId = document.getElementById("userId").value;
@@ -43,10 +36,18 @@
 					data : {
 							cId : userId , 
 							cContent : msg.value , 
-							cNickName : username
+							cNickName : username,
+							date : today.toLocaleString()
 						},
 					success : data =>{
-				        websocket.send(username + ":" + msg.value);
+						/*var str = "";
+						str += "<div class='rChat chatting'>";
+		                str += "<div class='dsib name'>"+username+"</div>";
+		                str += "<div class='dsib content'>"+msg.value+"</div>&emsp;<br>";
+		                str += "<p class='rdate'>"+today.toLocaleString()+"</p>";
+		                str += "</div>";
+		                $("#chat").append(str);*/
+				        websocket.send(username + "<>?>" + msg.value + "<>?>" + today.toLocaleString());
 				        msg.value = '';
 					}	,
 					error : function() {
@@ -110,21 +111,21 @@
 		        var sessionId = null;
 		        //데이터를 보낸 사람
 		        var message = null;
-		        var arr = data.split(":");
-				console.log(data);
+		        var arr = data.split("<>?>");
+				console.log("data : " + 	data);
 		        var cur_session = username;
 
 		        //현재 세션에 로그인 한 사람
 		        sessionId = arr[0];
 		        message = arr[1];
-
+				date = arr[2];
 
 		            //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
 		            if(sessionId == cur_session){
 		                var str = "<div class='rChat chatting'>";
 		                str += "<div class='dsib name'>"+sessionId+"</div>";
 		                str += "<div class='dsib content'>"+message+"</div>&emsp;<br>";
-		                str += "<p class='rdate'>"+cDate[3]+"</p>";
+		                str += "<p class='rdate'>"+date+"</p>";
 		                str += "</div>";
 		                $("#chat").append(str);
 		            }
@@ -132,7 +133,7 @@
 		            	var str = "<div class='lChat chatting'>";
 		                str += "<div class='dsib name'>"+sessionId+"</div>";
 		                str += "<br>&emsp;<div class='dsib content'>"+message+"</div>";
-		                str += "<p class='ldate'>"+cDate[3]+"</p>";
+		                str += "<p class='ldate'>"+date+"</p>";
 		                str += "</div>";
 		                $("#chat").append(str);
 		            }

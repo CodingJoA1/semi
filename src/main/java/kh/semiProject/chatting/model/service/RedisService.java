@@ -18,9 +18,9 @@ public class RedisService {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
-    public void saveData(String id,String content,String nickName,Date date) {
+    public void saveData(String id,String content,String nickName,String date) {
     	Map<String,String> data = new HashMap<>();
-    	data.put("date", date.toString());
+    	data.put("date", date);
     	data.put("content", content);
     	data.put("nickName", nickName);
 //    	redisTemplate.opsForList().(id, nickName, content,date.toString());/
@@ -37,7 +37,6 @@ public class RedisService {
     	while(iter.hasNext()) {
     		List<Object> object = redisTemplate.opsForList().range(iter.next(), 0, -1);
     		list.add(object);
-    		System.out.println(list);
     	}
         return list;
     }

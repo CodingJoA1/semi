@@ -95,6 +95,10 @@
 }
 
 /*채팅 */
-#chattingModal{
-	display:inline-block;
+.chatDiv{
+	display: inline-block;
+	    position: absolute;
+	    right: 40px;
+	    top: 450px;
+	
 }
