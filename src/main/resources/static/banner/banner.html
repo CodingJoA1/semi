@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>자동 배너 슬라이드</title>
+  <style>
+    #banner {
+      width: 100%;        /* 원한다면 고정 크기(px)로 바꿔도 됨 */
+      height: auto;      
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="banner" src="../image/배너(샘플).jpg">
+
+  <script>
+    // 바꿀 이미지들을 배열에 넣는다
+    const images = [
+      '../image/배너(샘플).jpg',
+      '../image/배너(샘플) (2).jpg',
+    ];
+
+    let currentIndex = 0;
+    const bannerEl = document.getElementById('banner');
+
+    // 5초(5000ms)마다 실행
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % images.length;  // 0→1→0…
+      bannerEl.src = images[currentIndex];
+    }, 5000);
+  </script>
+
+</body>
+</html>
